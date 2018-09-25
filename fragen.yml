@@ -7,7 +7,7 @@
       prompt: "Hend ihr scho oepper gfunde wo uf oi Stell passt??\n1 - Ja mir sind scho fuendig worde, danke\n2 - Voll noed, hend uf dich gwartet :) \n"
       private: no
 
-    - name: "knowldege"
+    - name: "knowledge"
       prompt: "Chemt au en Kandidat in Frag wo sehr motiviert isch aber eifach no chli muesst ufbaut werde?"
       private: no
 
@@ -35,13 +35,17 @@
   tasks:
     - name: already occupied
       debug: 
-        msg: echo "Die Stelle isch scho verge... scheisse"
+        msg: "Die Stelle isch scho verge... scheisse"
       when: ( openjob == "1" )
 
     - name: already occupied
       debug:
-        msg: echo "Geil, sie hend no niemert gfunde, los bewerbig uselah"
+        msg: "Geil, sie hend no niemert gfunde, los bewerbig uselah"
       when: ( openjob == "2" )
+
+    - name: "knowledge"
+      debug:
+        msg: "{{ knowledge }}"
 
     - name: actual projects
       debug:
@@ -61,4 +65,4 @@
 
     - name: Team avg age
       debug:
-        msg: echo "De Altersduchschnitt liet bi {{ avgage }}"
+        msg: "De Altersduchschnitt liet bi {{ avgage }}"
