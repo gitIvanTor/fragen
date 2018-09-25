@@ -1,0 +1,37 @@
+---
+- name: localsearch.ch offene Fragen
+  hosts: localhost
+  become: false
+
+  vars_prompt:
+    - name: "openjob"
+      prompt: "Hend ihr scho oepper gfunde wo uf oi Stell passt??\n1 - Ja mir sind scho fuendig worde, danke\n2 - Voll noed, hend uf dich gwartet :) \n"
+      private: no
+    - name: "knowldege"
+      prompt: "Chemt au en Kandidat in Frag wo sehr motiviert isch aber eifach no chli muesst ufbaut werde?"
+      private: no
+    - name: "project"
+      prompt: "Was stoend aktuell fuer Projekt ah?"
+      private: no
+    - name: "count"
+      prompt: "Wieviel Player hender i de Mannschaft?"
+    - name: "avgage"
+      prompt: "Altersdurchschnitt im Team?"
+      private: yes
+    
+
+  tasks:
+    - name: already occupied
+      debug: 
+        msg: echo "Die Stelle isch scho verge... scheisse"
+      when: ( openjob == "1" )
+    - name: already occupied
+      debug:
+        msg: echo "Geil, sie hend no niemert gfunde, los bewerbig uselah"
+      when: ( openjob == "2" )
+    - name: actual projects
+      debug:
+        msg: "{{ project }}"
+    - name: Team-Member count and there age avg
+      debug:
+        msg: echo "Es sind {{ count }} Mitarbeiter im Team und hend en Altersduchschnitt vo {{ avgage }}"
