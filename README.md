@@ -9,5 +9,10 @@ Dies schien mir jedoch zu "langweilig" und habe meine Fragen als Playbook erstel
 
 Da die Stellenbeschreibung in "Du" Form geschrieben ist, habe ich mir erlaubt die Fragen in gleicher Form zu stellen.
 
+Usage:
+
+ansible-playbook fragen.yml
+
+
 Gruss
 Ivan
