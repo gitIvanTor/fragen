@@ -1,7 +1,6 @@
 ---
 - name: localsearch.ch offene Fragen
   hosts: localhost
-  become: false
 
   vars_prompt:
     - name: "openjob"
@@ -14,7 +13,8 @@
       prompt: "Was stoend aktuell fuer Projekt ah?"
       private: no
     - name: "count"
-      prompt: "Wieviel Player hender i de Mannschaft?"
+      prompt: "Wieviel Spieler hender im Team?"
+      private: no
     - name: "avgage"
       prompt: "Altersdurchschnitt im Team?"
       private: yes
@@ -32,6 +32,6 @@
     - name: actual projects
       debug:
         msg: "{{ project }}"
-    - name: Team-Member count and there age avg
+    - name: Team-Member count and there avg age
       debug:
         msg: echo "Es sind {{ count }} Mitarbeiter im Team und hend en Altersduchschnitt vo {{ avgage }}"
