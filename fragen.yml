@@ -6,15 +6,27 @@
     - name: "openjob"
       prompt: "Hend ihr scho oepper gfunde wo uf oi Stell passt??\n1 - Ja mir sind scho fuendig worde, danke\n2 - Voll noed, hend uf dich gwartet :) \n"
       private: no
+
     - name: "knowldege"
       prompt: "Chemt au en Kandidat in Frag wo sehr motiviert isch aber eifach no chli muesst ufbaut werde?"
       private: no
+
     - name: "project"
       prompt: "Was stoend aktuell fuer Projekt ah?"
       private: no
-    - name: "count"
-      prompt: "Wieviel Spieler hender im Team?"
+
+    - name: "proxmox"
+      prompt: "Wie gross isch de groessti Proxmox Cluster wo ihr im isatzt hend?"
       private: no
+
+    - name: "tower"
+      prompt: "Hend ihr au Ansible Tower oder AWX im isatzt und Foreman?"
+      private: no
+
+    - name: "distro"
+      prompt: "Weli Distributione hender am laufe? Debian, Centos, Redhat, Suse ... "
+      private: no
+
     - name: "avgage"
       prompt: "Altersdurchschnitt im Team?"
       private: yes
@@ -25,13 +37,28 @@
       debug: 
         msg: echo "Die Stelle isch scho verge... scheisse"
       when: ( openjob == "1" )
+
     - name: already occupied
       debug:
         msg: echo "Geil, sie hend no niemert gfunde, los bewerbig uselah"
       when: ( openjob == "2" )
+
     - name: actual projects
       debug:
         msg: "{{ project }}"
-    - name: Team-Member count and there avg age
+
+    - name: Proxmox Cluster
       debug:
-        msg: echo "Es sind {{ count }} Mitarbeiter im Team und hend en Altersduchschnitt vo {{ avgage }}"
+        msg: "De groessti Cluster het {{ proxmox }} Nodes"
+
+    - name: Tower
+      debug:
+        msg: "{{ tower }}"
+
+    - name: Distribution in use
+      debug:
+        msg: "{{ distro }}"
+
+    - name: Team avg age
+      debug:
+        msg: echo "De Altersduchschnitt liet bi {{ avgage }}"
